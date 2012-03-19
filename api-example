@@ -1,0 +1,113 @@
+### Create a TagDevice
+
+    Request:  POST /api/v1/accounts/1073741824/tag_devices/
+    Request Body: 
+        {'uuid': '0xFFFFFFFFFFFFFF'}
+    Response:  201
+    Response Headers:
+        Location http://localhost:8010/api/v1/accounts/1073741824/tag_devices/0xFFFFFFFFFFFFFF/
+    Response Body
+        {}
+
+### Assigning a TagDevice to an App with badge_number=1 TagField
+
+    Request:  POST /api/v1/accounts/1073741824/apps/1073741824/tags/
+    Request Body: 
+        {'fields': {'badge_number': '1'},
+         'tag_device': '/api/v1/accounts/1073741824/tag_devices/0xFFFFFFFFFFFFFF/'}
+    Response:  201
+    Response Headers:
+        Location http://localhost:8010/api/v1/accounts/1073741824/apps/1073741824/tags/2/
+    Response Body
+        {}
+
+### Get the value of a TagField via key and TagDevice uuid
+
+    Request:  GET /api/v1/accounts/1073741824/apps/1073741824/tags/0xFFFFFFFFFFFFFF/fields/badge_number/
+    Request Body: 
+        None
+    [14/Mar/2012 01:47:25] "GET /api/v1/accounts/1073741824/apps/1073741824/tags/0xFFFFFFFFFFFFFF/fields/badge_number/ HTTP/1.1" 200 128
+    Response:  200
+    Response Body
+        {u'key': u'badge_number',
+         u'resource_uri': u'/api/v1/accounts/1073741824/apps/1073741824/tags/2/fields/badge_number/',
+         u'value': u'1'}
+
+### Get the Location header specified resource_uri  
+
+    Request:  GET /api/v1/accounts/1073741824/apps/1073741824/tags/2/
+    Request Body: 
+        {}
+    Response:  200
+    Response Body
+        {u'app': u'/api/v1/accounts/1073741824/apps/1073741824/',
+         u'created_at': u'2012-03-14T01:18:20',
+         u'description': u'',
+         u'fields': [{u'key': u'badge_number',
+                      u'resource_uri': u'/api/v1/accounts/1073741824/apps/1073741824/tags/2/fields/badge_number/',
+                      u'value': u'1'}],
+         u'id': u'2',
+         u'max_scans': -1,
+         u'name': None,
+         u'resource_uri': u'/api/v1/accounts/1073741824/apps/1073741824/tags/2/',
+         u'tag_device': u'/api/v1/accounts/1073741824/tag_devices/0xFFFFFFFFFFFFFF/',
+         u'uuid': u'0xFFFFFFFFFFFFFF'}
+
+### Create a ReaderDevice
+
+    Request:  POST /api/v1/accounts/1073741824/reader_devices/
+    Request Body: 
+        {'uuid': '0xAFFFFFFFFFFFFF'}
+    Response:  201
+    Response Headers:
+        Location http://localhost:8010/api/v1/accounts/1073741824/reader_devices/0xAFFFFFFFFFFFFF/
+    Response Body
+        {}
+
+### Assign the ReaderDevice, giving it a meaningful name: 'door #2'
+
+    Request:  POST /api/v1/accounts/1073741824/apps/1073741824/readers/
+    Request Body: 
+        {'name': 'door #2',
+         'reader_device': '/api/v1/accounts/1073741824/reader_devices/0xAFFFFFFFFFFFFF/'}
+    Response:  201
+    Response Headers:
+        Location http://localhost:8010/api/v1/accounts/1073741824/apps/1073741824/readers/2/
+    Response Body
+        {}
+
+### Make a Scan
+
+    Request:  POST /api/v1/accounts/1073741824/apps/1073741824/scans/
+    Request Body: 
+        {'reader': '/api/v1/accounts/1073741824/apps/1073741824/readers/0xAFFFFFFFFFFFFF/',
+         'tag': '/api/v1/accounts/1073741824/apps/1073741824/tags/0xFFFFFFFFFFFFFF/'}
+    Response:  201
+    Response Headers:
+        Location http://localhost:8010/api/v1/accounts/1073741824/apps/1073741824/scans/1/
+    Response Body
+        {}
+
+### GET the Scan
+
+    Request:  GET /api/v1/accounts/1073741824/apps/1073741824/scans/1/
+    Request Body: 
+        {}
+    Response:  200
+    Response Body
+        {u'app': u'/api/v1/accounts/1073741824/apps/1073741824/',
+         u'created_at': u'2012-03-14T01:18:20',
+         u'reader': u'/api/v1/accounts/1073741824/apps/1073741824/readers/2/',
+         u'resource_uri': u'/api/v1/accounts/1073741824/apps/1073741824/scans/1/',
+         u'tag': u'/api/v1/accounts/1073741824/apps/1073741824/tags/2/'}
+
+### Try and make a Scan with unknowns
+
+    Request:  POST /api/v1/accounts/1073741824/apps/1073741824/scans/
+    Request Body: 
+        {'reader': '/api/v1/accounts/1073741824/apps/1073741824/readers/0xAFFFFFFFFFFFFa/',
+         'tag': '/api/v1/accounts/1073741824/apps/1073741824/tags/0xFFFFFFFFFFFFFa/'}
+    Response:  404
+    Response Body
+        {u'message': u"Could not find the provided object via resource URI '/api/v1/accounts/1073741824/apps/1073741824/readers/0xAFFFFFFFFFFFFa/'. Perhaps you haven't created/assigned this yet. Make sure not to use device uris for Scans.",
+         u'status': u'error'}
