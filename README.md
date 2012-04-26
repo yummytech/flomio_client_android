@@ -2,16 +2,16 @@
 
 ## Flomio API
 
-Flomio makes it easy for you to develop NFC enabled applications. We take care of the heavy lifting of managing tags, readers, scans, and leave you to focus on delighting your customers. For more click [here](http://flomio.com/ "Flomio") 
+Flomio makes it easy for you to develop NFC enabled applications. We take care of the heavy lifting of managing tags, readers, scans, and leave you to focus on delighting your customers. For more click [here](http://flomio.com/ "Flomio").
 
 ## Android <3's NFC
 Flomio sits atop the hardware NFC adapter bundled with the Android SDK. The Android OS reads the tag information and passes it to the Flomio helper library for processing. You can read more on Android's NFC support [here](http://developer.android.com/guide/topics/nfc/index.html "Near Field Communication | Android Developers").
 
 ## Install
 This repo contains an Eclipse library project. To get started you need to import the project and add it to the buildpath of your existing project. 
-1. Clone this repo using `git clone git@github.com:flomio/flomio-android`
-2. Import it using "File > Import" then "General -> Existing Project". 
-3. Add it to your project's build path by using "File > Properties" and clicking "Add" under the library section of the "Android" menu item. 
+-	Clone this repo using `git clone git@github.com:flomio/flomio-android`
+-	Import it using "File > Import" then "General -> Existing Project". 
+-	Add it to your project's build path by using "File > Properties" and clicking "Add" under the library section of the "Android" menu item. 
 
 ## Flomio Resources
 Flomio organizes NFC activity into four resources:
