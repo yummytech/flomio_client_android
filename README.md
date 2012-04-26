@@ -9,9 +9,10 @@ Flomio sits atop the hardware NFC adapter bundled with the Android SDK. The Andr
 
 ## Install
 This repo contains an Eclipse library project. To get started you need to import the project and add it to the buildpath of your existing project. 
--	Clone this repo using `git clone git@github.com:flomio/flomio-android`
--	Import it using "File > Import" then "General -> Existing Project". 
--	Add it to your project's build path by using "File > Properties" and clicking "Add" under the library section of the "Android" menu item. 
+
+- Clone this repo using `git clone git@github.com:flomio/flomio-android`
+- Import it using "File > Import" then "General -> Existing Project". 
+- Add it to your project's build path by using "File > Properties" and clicking "Add" under the library section of the "Android" menu item. 
 
 ## Flomio Resources
 Flomio organizes NFC activity into four resources:
