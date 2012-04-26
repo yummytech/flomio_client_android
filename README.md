@@ -2,6 +2,8 @@
 
 Flomio makes it easy for you to develop NFC enabled applications. We take care of the heavy lifting of managing tags, readers, scans, and leave you to focus on delighting your customers. 
 
+Visit [Flomio](http://flomio.com "Flomio") to learn more.
+
 ## Android <3's NFC
 Flomio sits atop the hardware NFC adapter bundled with the Android SDK. The Android OS reads the tag information and passes it to the Flomio helper library for processing. You can read more on Android's NFC support [here](http://developer.android.com/guide/topics/nfc/index.html "Near Field Communication | Android Developers").
 
